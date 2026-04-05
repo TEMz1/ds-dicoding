@@ -117,8 +117,8 @@ with st.sidebar:
 
 # ── Route ────────────────────────────────────────────────────────────────────
 if page == "Dashboard Overview":
-    from pages import overview
+    from modules import overview
     overview.show()
 else:
-    from pages import prediction
+    from modules import prediction
     prediction.show()
