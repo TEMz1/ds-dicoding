@@ -30,7 +30,7 @@ streamlit run dashboard/dashboard.py
 
 ## Live Demo
 Dashboard sudah di-deploy di Streamlit Community Cloud:
-https://temz1-dashboard.streamlit.app/
+[ecommerce-data-analytics](https://temz1-ecommerce-data-analytics.streamlit.app/)
 
 🎯 Purpose
 Proyek ini dibuat untuk submission kelas/kursus Dicoding Belajar Analisis Data. Menunjukkan kemampuan:

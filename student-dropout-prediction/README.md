@@ -61,7 +61,7 @@ Mau tahu risiko dropout mahasiswa secara spesifik? Langsung aja meluncur ke hala
 streamlit run app.py
 ```
 
-atau bisa diakses melalui student-dropout-prediction
+atau bisa diakses melalui [student-dropout-prediction](https://temz1-student-dropout.streamlit.app/)
 
 
 ## Conclusion
