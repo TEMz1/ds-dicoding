@@ -1,3 +1,4 @@
+import os
 import streamlit as st
 import pandas as pd
 import numpy as np
@@ -141,17 +142,19 @@ hr { border-color:#1e2740 !important; }
 # ── LOAD DATA ─────────────────────────────────────────────────────────────────
 @st.cache_data
 def load_data():
-    # URL raw dari GitHub (pastikan branch 'main' dan path benar)
-    url = "https://raw.githubusercontent.com/TEMz1/e-commerce_dashboard/main/dashboard/main_data.csv"
+    # Mengambil path folder tempat file dashboard.py 
+    base_dir = os.path.dirname(__file__)
+    file_path = os.path.join(base_dir, "main_data.csv")
     
     try:
-        df = pd.read_csv(url)
+        # Load langsung dari folder yang sama
+        df = pd.read_csv(file_path)
     except Exception as e:
-        st.error(f"Gagal load data dari URL: {e}")
-        st.info("Cek koneksi atau pastikan file ada di repo GitHub.")
-        return pd.DataFrame()  # return kosong agar app tidak crash total
+        st.error(f"Gagal load data lokal: {e}")
+        st.info(f"Pastikan file main_data.csv ada di folder: {base_dir}")
+        return pd.DataFrame() 
     
-    # Sisanya sama seperti sebelumnya (datetime conversion, dll)
+    # --- Sisanya tetap sama seperti sebelumnya ---
     for col in ['order_purchase_timestamp','order_delivered_customer_date',
                 'order_estimated_delivery_date','order_delivered_carrier_date']:
         df[col] = pd.to_datetime(df[col], errors='coerce')
