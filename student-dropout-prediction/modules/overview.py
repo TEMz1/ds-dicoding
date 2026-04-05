@@ -3,7 +3,8 @@ import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
-import numpy as np
+from pathlib import Path
+
 
 # ── Mappings ─────────────────────────────────────────────────────────────────
 COURSE_MAP = {
@@ -102,10 +103,12 @@ CSS = """
 </style>
 """
 
+ROOT = Path(__file__).parent.parent
+
 # ── Data ──────────────────────────────────────────────────────────────────────
 @st.cache_data
 def load_data():
-    df = pd.read_csv("dataset/data.csv", sep=';')
+    df = pd.read_csv(ROOT / "dataset" / "data.csv", sep=';')
     mask = ~(
         (df['Curricular_units_1st_sem_enrolled'] == 0) &
         (df['Curricular_units_2nd_sem_enrolled'] == 0) &

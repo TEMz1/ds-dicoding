@@ -3,6 +3,9 @@ def show():
     import pandas as pd
     import joblib
     import plotly.graph_objects as go
+    from pathlib import Path
+ 
+    ROOT = Path(__file__).parent.parent
 
     st.markdown("""
     <style>
@@ -69,10 +72,10 @@ def show():
     # ── Load ─────────────────────────────────────────────────────────────────
     @st.cache_resource
     def load_assets():
-        model     = joblib.load('model/model_rf_dropout.pkl')
-        defaults  = joblib.load('model/default_values.pkl')
-        cols      = joblib.load('model/feature_columns.pkl')
-        threshold = joblib.load('model/threshold.pkl')
+        model     = joblib.load(ROOT / 'model' / 'model_rf_dropout.pkl')
+        defaults  = joblib.load(ROOT / 'model' / 'default_values.pkl')
+        cols      = joblib.load(ROOT / 'model' / 'feature_columns.pkl')
+        threshold = joblib.load(ROOT / 'model' / 'threshold.pkl')
         return model, defaults, cols, threshold
 
     model, defaults, cols, best_threshold = load_assets()
